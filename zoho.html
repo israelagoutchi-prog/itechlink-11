@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="iTechLink Zoho Solutions — CRM, accounting, help desk and business automation set up, integrated and supported for growing businesses.">
+<title>Zoho Solutions | iTechLink</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg:#111621;--bg2:#161c2a;--card:#1b2233;--card2:#20283a;
+    --line:rgba(255,255,255,.10);--text:#eef1f6;--muted:#8a93a6;
+    --cyan:#3fd0ff;--violet:#7c6cff;
+    --grad:linear-gradient(120deg,var(--cyan),var(--violet));
+    --max:1200px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"Inter",sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.wrap{width:min(var(--max),92%);margin:auto}
+h1,h2,h3,h4{font-family:"Space Grotesk",sans-serif}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.eyebrow{display:flex;align-items:center;gap:10px;color:var(--cyan);font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:16px}
+.eyebrow:before{content:"";width:28px;height:1px;background:var(--cyan)}
+.reveal{opacity:0;transform:translateY(25px);transition:.7s ease}
+.reveal.show{opacity:1;transform:none}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:1000;background:rgba(6,8,13,.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+nav{height:74px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:9px;font-family:"Space Grotesk";font-size:19px;font-weight:700}
+.logo-img{height:58px;width:auto;object-fit:contain}
+.brand-itech{color:#fff}.brand-link{color:var(--cyan)}
+.nav-links{display:flex;align-items:center;gap:30px;color:var(--muted);font-size:13px}
+.nav-links a{transition:.25s}.nav-links a:hover{color:#fff}
+.services-link{display:flex;gap:6px;align-items:center}
+.arrow{font-size:13px}
+.nav-dropdown{position:relative;height:74px;display:flex;align-items:center}
+.services-menu{
+    position:absolute;top:65px;left:50%;transform:translateX(-50%) translateY(10px);
+    width:450px;padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:5px;
+    background:rgba(17,22,33,.98);border:1px solid var(--line);border-radius:16px;
+    opacity:0;visibility:hidden;pointer-events:none;transition:.25s ease;box-shadow:0 25px 70px rgba(0,0,0,.45)
+}
+.nav-dropdown:hover .services-menu{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%)}
+.service-menu-item{display:flex;gap:10px;align-items:center;padding:12px;border-radius:10px;transition:.25s}
+.service-menu-item:hover{background:rgba(255,255,255,.06)}
+.menu-icon{width:38px;height:38px;flex:none;border-radius:10px;display:grid;place-items:center;background:rgba(63,208,255,.10);color:var(--cyan);border:1px solid rgba(63,208,255,.12)}
+.menu-icon svg{width:18px}
+.service-menu-item strong{display:block;font:600 12px "Space Grotesk"}
+.service-menu-item span{display:block;color:var(--muted);font-size:10px;margin-top:3px}
+.nav-cta,.btn-primary{background:var(--grad);color:#04060a;font-weight:600;border-radius:100px}
+.nav-cta{padding:11px 20px;font-size:12px}
+.menu-btn{display:none;background:transparent;border:1px solid var(--line);width:42px;height:42px;border-radius:10px}
+.menu-btn span{display:block;width:19px;height:2px;background:#fff;margin:4px auto;transition:.25s}
+.menu-btn.active span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.menu-btn.active span:nth-child(2){opacity:0}
+.menu-btn.active span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.mobile-menu{display:none}
+
+/* HERO */
+.hero{position:relative;min-height:720px;display:flex;align-items:center;overflow:hidden;padding:100px 0 80px}
+.grid{
+    position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+    background-size:48px 48px;mask-image:radial-gradient(ellipse at center,#000 25%,transparent 78%)
+}
+.glow{position:absolute;border-radius:50%;filter:blur(100px);opacity:.32}
+.glow.one{width:430px;height:430px;background:var(--cyan);right:-130px;top:-120px}
+.glow.two{width:400px;height:400px;background:var(--violet);left:-160px;bottom:-180px}
+.hero-content{position:relative;z-index:2;max-width:720px}
+.hero h1{font-size:clamp(42px,6vw,72px);line-height:1.02;letter-spacing:-2px;font-weight:600}
+.hero p{max-width:610px;color:var(--muted);font-size:15px;line-height:1.85;margin-top:24px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.btn-primary,.btn-ghost{display:inline-flex;align-items:center;justify-content:center;padding:15px 26px;font-size:13px;transition:.25s}
+.btn-primary:hover,.nav-cta:hover{transform:translateY(-2px);opacity:.9}
+.btn-ghost{border:1px solid var(--line);border-radius:100px}
+.btn-ghost:hover{background:rgba(255,255,255,.05);transform:translateY(-2px)}
+
+/* UI/UX HERO VISUAL */
+.hero-visual{position:absolute;right:-2%;top:50%;transform:translateY(-50%);width:500px;height:430px;z-index:1}
+.design-board{
+    position:absolute;inset:20px 0 0 20px;background:#0b101a;border:1px solid rgba(255,255,255,.14);
+    border-radius:18px;box-shadow:0 35px 90px rgba(0,0,0,.45);overflow:hidden;
+    transform:perspective(900px) rotateY(-8deg) rotateX(3deg)
+}
+.board-top{height:40px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 14px;gap:7px}
+.board-dot{width:7px;height:7px;border-radius:50%;background:#667080}
+.board-title{margin-left:10px;color:var(--muted);font-size:9px}
+.design-content{display:grid;grid-template-columns:75px 1fr;height:calc(100% - 40px)}
+.design-sidebar{border-right:1px solid var(--line);padding:18px 12px}
+.side-logo{width:35px;height:35px;border-radius:10px;background:var(--grad);margin-bottom:25px}
+.side-line{width:100%;height:6px;border-radius:5px;background:#242d3e;margin-bottom:12px}
+.side-line.active{background:var(--cyan);opacity:.7}
+.design-screen{padding:22px}
+.screen-top{display:flex;justify-content:space-between;align-items:center}
+.screen-title{width:120px;height:10px;background:#e9edf4;border-radius:5px;opacity:.8}
+.screen-avatar{width:26px;height:26px;border-radius:50%;background:var(--grad)}
+.screen-main{margin-top:30px;display:grid;grid-template-columns:1fr .75fr;gap:15px}
+.screen-copy h3{font-size:27px;line-height:1.05;margin-bottom:12px}
+.screen-copy h3 span{color:var(--cyan)}
+.ui-card{height:170px;border-radius:14px;border:1px solid #2d374a;background:#111723;position:relative;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.22)}
+.ui-card img{width:100%;height:100%;display:block;object-fit:cover;object-position:center;border-radius:inherit;transition:transform .45s ease}
+.ui-card:hover img{transform:scale(1.04)}
+.ui-card svg{display:block;width:100%;height:100%}
+.floating{position:absolute;background:rgba(25,32,47,.95);border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:0 15px 35px rgba(0,0,0,.3);font-size:10px;color:var(--muted);backdrop-filter:blur(10px)}
+.floating strong{display:block;color:#fff;font:600 13px "Space Grotesk";margin-bottom:3px}
+.floating.a{left:0;top:35px}.floating.b{right:-15px;bottom:25px}
+
+/* SECTIONS */
+section{padding:105px 0}
+.sec-head{max-width:680px;margin-bottom:52px}
+.sec-head h2{font-size:clamp(30px,4vw,45px);line-height:1.08;letter-spacing:-1px}
+.sec-head p{color:var(--muted);font-size:14px;line-height:1.85;margin-top:15px}
+.features{background:var(--bg2);border-block:1px solid var(--line)}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px;transition:.35s;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-7px);border-color:rgba(63,208,255,.45);box-shadow:0 20px 55px rgba(0,0,0,.28)}
+.icon{width:48px;height:48px;border-radius:13px;background:var(--grad);display:grid;place-items:center;color:#05070b;margin-bottom:20px}
+.icon svg{width:22px;height:22px}
+.card h3{font-size:17px;margin-bottom:10px}
+.card p{font-size:12.5px;line-height:1.8;color:var(--muted)}
+.card ul{list-style:none;margin-top:18px}
+.card li{font-size:11.5px;color:#c7ceda;padding:7px 0;border-top:1px solid rgba(255,255,255,.06)}
+.card li:before{content:"✓";color:var(--cyan);margin-right:8px}
+
+/* PROCESS */
+.process{display:grid;grid-template-columns:1fr 1.2fr;gap:70px;align-items:start}
+.process-list{display:grid;gap:14px}
+.step{display:grid;grid-template-columns:50px 1fr;gap:18px;padding:20px;border:1px solid var(--line);background:rgba(255,255,255,.025);border-radius:14px}
+.step-num{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:rgba(63,208,255,.10);color:var(--cyan);font:600 12px "Space Grotesk"}
+.step h3{font-size:15px;margin-bottom:5px}
+.step p{font-size:12px;color:var(--muted);line-height:1.7}
+/* NEW: process image */
+.process-visual{margin-top:34px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,var(--card),var(--bg2));padding:18px;overflow:hidden;position:relative}
+.process-visual svg,.process-visual img{display:block;width:100%;height:auto;border-radius:12px}
+
+
+/* REAL IMAGES */
+.icon.app-logo{position:relative;overflow:hidden}
+.icon.app-logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;padding:7px;border-radius:13px}
+.ui-card{position:relative}
+.ui-card>img.real{position:absolute;inset:0;z-index:2;object-fit:cover}
+.process-visual{position:relative}
+.process-visual img.real-process + svg{display:none}
+
+/* DESIGN SYSTEM */
+.design-system{background:var(--bg2);border-block:1px solid var(--line)}
+.design-system-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.system-item{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:24px;transition:.3s}
+.system-item:hover{border-color:rgba(63,208,255,.35);transform:translateY(-4px)}
+.system-number{color:var(--cyan);font:600 11px "Space Grotesk";margin-bottom:15px}
+.system-item h3{font-size:15px;margin-bottom:7px}
+.system-item p{font-size:11.5px;color:var(--muted);line-height:1.7}
+
+/* TOOLS */
+.tools{display:flex;flex-wrap:wrap;gap:12px}
+.tool-chip{padding:12px 17px;border:1px solid var(--line);border-radius:100px;background:var(--card);font-size:12px;color:#cbd1dc;transition:.25s}
+.tool-chip:hover{border-color:var(--cyan);color:#fff;transform:translateY(-2px)}
+
+/* WHY US */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.why-card{padding:30px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.02)}
+.why-card svg{width:27px;height:27px;color:var(--cyan);margin-bottom:18px}
+.why-card h3{font-size:17px;margin-bottom:9px}
+.why-card p{color:var(--muted);font-size:12.5px;line-height:1.8}
+
+/* CTA */
+.cta{background:var(--grad);color:#04060a;border-radius:24px;padding:70px 45px;text-align:center}
+.cta h2{font-size:clamp(30px,4vw,46px)}
+.cta p{margin-top:12px;font-size:14px;opacity:.8}
+.cta-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn-dark{background:#04060a;color:#fff;border-radius:100px;padding:15px 26px;font-size:13px;font-weight:600}
+.btn-outline-dark{border:1px solid rgba(0,0,0,.35);border-radius:100px;padding:15px 26px;font-size:13px;font-weight:600}
+
+/* FOOTER */
+footer{padding:70px 0 30px;border-top:1px solid var(--line)}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:50px;padding-bottom:50px}
+.footer-brand p{max-width:320px;color:var(--muted);font-size:12px;line-height:1.8;margin-top:12px}
+.footer-col h4{font-size:11px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:18px}
+.footer-col a{display:block;color:#c5ccd8;font-size:13px;margin-bottom:12px}
+.footer-col a:hover{color:var(--cyan)}
+.footer-bottom{border-top:1px solid var(--line);padding-top:22px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:var(--muted);font-size:11px}
+
+/* MOBILE */
+@media(max-width:980px){
+    .nav-links,.nav-cta{display:none}
+    .menu-btn{display:block}
+    .mobile-menu{
+        display:flex;position:absolute;left:0;right:0;top:74px;padding:16px 4%;flex-direction:column;
+        background:rgba(10,14,23,.98);border-bottom:1px solid var(--line);
+        transform:translateY(-10px);opacity:0;visibility:hidden;transition:.25s
+    }
+    .mobile-menu.active{transform:none;opacity:1;visibility:visible}
+    .mobile-menu>a{padding:14px 10px;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;color:#cbd1dc}
+    .mobile-menu>a:hover{color:var(--cyan)}
+    .mobile-quote{margin-top:10px;text-align:center!important;background:var(--grad);color:#04060a!important;border-radius:100px!important;font-weight:600}
+    .hero-visual{opacity:.45;right:-18%}
+    .grid-3,.design-system-grid,.why-grid{grid-template-columns:1fr 1fr}
+    .process{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+    nav{height:68px}
+    .logo-img{height:53px}
+    .mobile-menu{top:68px}
+    .hero{min-height:auto;padding:80px 0 65px}
+    .hero h1{font-size:43px}
+    .hero p{font-size:14px}
+    .hero-actions{flex-direction:column}
+    .btn-primary,.btn-ghost{width:100%}
+    .hero-visual{display:none}
+    section{padding:78px 0}
+    .grid-3,.design-system-grid,.why-grid{grid-template-columns:1fr}
+    .card{padding:26px}
+    .process{gap:35px}
+    .cta{padding:50px 25px}
+    .cta-actions{flex-direction:column}
+    .btn-dark,.btn-outline-dark{width:100%;display:block}
+    .footer-grid{grid-template-columns:1fr;gap:35px}
+}
+@media(prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+<div class="wrap">
+<nav>
+    <a class="logo" href="index.html" aria-label="iTechLink home">
+        <img class="logo-img" src="logo_itech-removebg-preview - Copy.png" alt="iTechLink logo">
+        <span><span class="brand-itech">iTech</span><span class="brand-link">Link</span></span>
+    </a>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+
+        <div class="nav-dropdown">
+            <a href="service.html" class="services-link">Services <span class="arrow">⌄</span></a>
+            <div class="services-menu">
+
+                <a href="web-development.html" class="service-menu-item">
+                    <div class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="15" rx="2"/><path d="M8 8l-3 4 3 4"/><path d="M16 8l3 4-3 4"/></svg></div>
+                    <div><strong>Web Design & Development</strong><span>Websites & applications</span></div>
+                </a>
+
+                <a href="ux.html" class="service-menu-item">
+                    <div class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="M3 15l5-4 4 3 3-2 6 5"/></svg></div>
+                    <div><strong>UI/UX Design</strong><span>Digital experiences</span></div>
+                </a>
+
+                <a href="zoho.html" class="service-menu-item">
+                    <div class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg></div>
+                    <div><strong>Zoho Solutions</strong><span>Business automation</span></div>
+                </a>
+
+                <a href="seo.html" class="service-menu-item">
+                    <div class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="10" r="6"/><path d="M15 15l5 5"/></svg></div>
+                    <div><strong>SEO</strong><span>Search & visibility</span></div>
+                </a>
+
+                <a href="it.html" class="service-menu-item">
+                    <div class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
+                    <div><strong>IT Infrastructure</strong><span>Networks & systems</span></div>
+                </a>
+
+                <a href="cyber.html" class="service-menu-item">
+                    <div class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 4v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7l7-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+                    <div><strong>Cybersecurity</strong><span>Security & risk protection</span></div>
+                </a>
+
+                <a href="cloud-solutions.html" class="service-menu-item">
+                    <div class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 18h10a4 4 0 0 0 1-7.87A6 6 0 0 0 6.08 9.5 4.5 4.5 0 0 0 7 18z"/></svg></div>
+                    <div><strong>Cloud Solutions</strong><span>Cloud deployment & migration</span></div>
+                </a>
+
+                <a href="branding.html" class="service-menu-item">
+                    <div class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 17l10-10 3 3L7 20H4z"/><path d="M13 8l3 3M17 5l2 2"/></svg></div>
+                    <div><strong>Branding & Graphics</strong><span>Creative & visual identity</span></div>
+                </a>
+
+            </div>
+        </div>
+
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <a href="contact.html" class="nav-cta">Get a Quote</a>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="service.html">Services</a>
+    <a href="web-development.html">Web Design & Development</a>
+    <a href="uiux.html">UI/UX Design</a>
+    <a href="zoho.html">Zoho Solutions</a>
+    <a href="service.html#seo">SEO</a>
+    <a href="service.html#cybersecurity">Cybersecurity</a>
+    <a href="service.html#cloud">Cloud Solutions</a>
+    <a href="service.html#branding">Branding & Graphics</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="mobile-quote">Get a Quote</a>
+</div>
+</div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="grid"></div>
+    <div class="glow one"></div>
+    <div class="glow two"></div>
+
+    <div class="wrap">
+        <div class="hero-content reveal">
+            <div class="eyebrow">Zoho Solutions</div>
+            <h1>Business software that <span class="grad-text">runs itself.</span></h1>
+            <p>
+                We set up, customise and connect Zoho applications so your sales, finance,
+                support and marketing teams work from one system — with less manual effort
+                and clearer visibility across your business.
+            </p>
+            <div class="hero-actions">
+                <a href="contact.html" class="btn-primary">Start Your Project →</a>
+                <a href="#services" class="btn-ghost">Explore Our Services</a>
+            </div>
+        </div>
+
+        <!-- ZOHO VISUAL -->
+        <div class="hero-visual">
+            <div class="design-board">
+                <div class="board-top">
+                    <i class="board-dot"></i><i class="board-dot"></i><i class="board-dot"></i>
+                    <span class="board-title">ZOHO AUTOMATION DASHBOARD</span>
+                </div>
+
+                <div class="design-content">
+                    <div class="design-sidebar">
+                        <div class="side-logo"></div>
+                        <div class="side-line active"></div>
+                        <div class="side-line"></div>
+                        <div class="side-line"></div>
+                        <div class="side-line"></div>
+                        <div class="side-line"></div>
+                    </div>
+
+                    <div class="design-screen">
+                        <div class="screen-top">
+                            <div class="screen-title"></div>
+                            <div class="screen-avatar"></div>
+                        </div>
+
+                        <div class="screen-main">
+                            <div class="screen-copy">
+                                <h3>One system, <span>every team.</span></h3>
+                                <div class="fake-text"></div>
+                                <div class="screen-button"></div>
+                            </div>
+
+                            <div class="ui-card">
+                                <img class="real" src="images/Zoho Products.jfif" alt="Zoho dashboard and business apps" onerror="this.remove()">
+                                <svg viewBox="0 0 200 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Connected business apps">
+                                    <defs><linearGradient id="zg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3fd0ff"/><stop offset="1" stop-color="#7c6cff"/></linearGradient></defs>
+                                    <path d="M100 85L38 34M100 85L162 34M100 85L38 136M100 85L162 136" stroke="#2d374a" stroke-width="2"/>
+                                    <path d="M100 85L38 34M100 85L162 136" stroke="url(#zg)" stroke-width="2" stroke-dasharray="4 4"/>
+                                    <circle cx="100" cy="85" r="24" fill="url(#zg)"/>
+                                    <path d="M90 85h20M100 75v20" stroke="#04060a" stroke-width="3" stroke-linecap="round"/>
+                                    <g font-family="Inter,sans-serif" font-size="8" fill="#eef1f6" text-anchor="middle">
+                                        <rect x="14" y="20" width="48" height="28" rx="8" fill="#1b2233" stroke="#3fd0ff"/><text x="38" y="38">CRM</text>
+                                        <rect x="138" y="20" width="48" height="28" rx="8" fill="#1b2233" stroke="#7c6cff"/><text x="162" y="38">Books</text>
+                                        <rect x="14" y="122" width="48" height="28" rx="8" fill="#1b2233" stroke="#7c6cff"/><text x="38" y="140">Desk</text>
+                                        <rect x="138" y="122" width="48" height="28" rx="8" fill="#1b2233" stroke="#3fd0ff"/><text x="162" y="140">Campaigns</text>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="floating a"><strong>Automated</strong>Fewer manual tasks</div>
+            <div class="floating b"><strong>Connected</strong>One view of your business</div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="features">
+<div class="wrap">
+    <div class="sec-head reveal">
+        <div class="eyebrow">What We Deliver</div>
+        <h2>Zoho applications configured around how you work.</h2>
+        <p>From a single application to a fully connected suite, we handle setup, customisation, data migration, integration and team training.</p>
+    </div>
+
+    <div class="grid-3">
+
+        <article class="card reveal">
+            <div class="icon app-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="8" r="3"/><path d="M3 20c.8-3.5 3-5.5 6-5.5s5.2 2 6 5.5"/><path d="M17 8h4M17 12h4"/></svg><img src="images/What is Zoho CRM _ _ Overview of Zoho CRM Software.jpg" alt="Zoho logo" onerror="this.remove()"></div>
+            <h3>Zoho CRM</h3>
+            <p>Manage leads, contacts and deals in one place, with pipelines that match your sales process.</p>
+            <ul><li>Lead & pipeline management</li><li>Sales automation</li><li>Reports & forecasting</li></ul>
+        </article>
+
+        <article class="card reveal">
+            <div class="icon app-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h4"/></svg><img src="images/Zoho Books.jpg" alt="Zoho logo" onerror="this.remove()"></div>
+            <h3>Zoho Books</h3>
+            <p>Cloud accounting that keeps invoicing, expenses and financial reporting organised.</p>
+            <ul><li>Invoicing & payments</li><li>Expense tracking</li><li>Financial reports</li></ul>
+        </article>
+
+        <article class="card reveal">
+            <div class="icon app-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg><img src="images/Zoho Desk.jpg" alt="Zoho logo" onerror="this.remove()"></div>
+            <h3>Zoho Desk</h3>
+            <p>A help desk that gives your support team a clear, organised way to respond to customers.</p>
+            <ul><li>Ticket management</li><li>Service-level tracking</li><li>Customer self-service</li></ul>
+        </article>
+
+        <article class="card reveal">
+            <div class="icon app-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M8 14h3M8 17h6"/></svg><img src="images/HR Software Pricing & Editions _ Start your 30-day free trial _ Zoho People.jfif" alt="Zoho logo" onerror="this.remove()"></div>
+            <h3>Zoho People</h3>
+            <p>Custom business applications built for processes that off-the-shelf software does not cover.</p>
+            <ul><li>Custom workflows</li><li>Forms & approvals</li><li>Internal business apps</li></ul>
+        </article>
+
+        <article class="card reveal">
+            <div class="icon app-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><img src="images/Zoho Mail .jpg" alt="Zoho logo" onerror="this.remove()"></div>
+            <h3>Zoho Mail</h3>
+            <p>Email marketing tied to your customer data, so campaigns reach the right people.</p>
+            <ul><li>Email campaigns</li><li>Audience segmentation</li><li>Campaign reporting</li></ul>
+        </article>
+
+        <article class="card reveal">
+            <div class="icon app-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.3 11l7.4-3.6M8.3 13l7.4 3.6"/></svg><img src="images/Zoho Projects .jpg" alt="Zoho logo" onerror="this.remove()"></div>
+            <h3>Zoho Project</h3>
+            <p>We move your existing data across safely and connect Zoho with the tools you already use.</p>
+            <ul><li>Data migration</li><li>API & app integration</li><li>Zoho Flow automation</li></ul>
+        </article>
+
+    </div>
+</div>
+</section>
+
+<!-- PROCESS -->
+<section>
+<div class="wrap">
+    <div class="process">
+
+        <div class="sec-head reveal">
+            <div class="eyebrow">Our Process</div>
+            <h2>From scattered tools to one connected system.</h2>
+            <p>We work in clear stages so your team understands what is changing and is confident using it from day one.</p>
+
+            <figure class="process-visual">
+                <img class="real-process" src="images/Zoho Products (2).jfif" alt="Zoho apps connected into one business system" loading="lazy" onerror="this.remove()">
+                <svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Zoho apps connected through a central automation hub">
+                    <defs><linearGradient id="pz" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3fd0ff"/><stop offset="1" stop-color="#7c6cff"/></linearGradient></defs>
+                    <path d="M240 135L80 50M240 135L400 50M240 135L80 220M240 135L400 220M240 135L240 40M240 135L240 232" stroke="#2d374a" stroke-width="2"/>
+                    <path d="M240 135L80 50M240 135L400 220M240 135L240 40" stroke="url(#pz)" stroke-width="2.5" stroke-dasharray="5 5"/>
+                    <circle cx="240" cy="135" r="46" fill="url(#pz)" opacity=".18"/>
+                    <circle cx="240" cy="135" r="34" fill="url(#pz)"/>
+                    <text x="240" y="131" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="700" fill="#04060a">Automation</text>
+                    <text x="240" y="145" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="700" fill="#04060a">Hub</text>
+                    <g font-family="Space Grotesk,sans-serif" font-size="11" font-weight="600" fill="#eef1f6" text-anchor="middle">
+                        <rect x="30" y="30" width="100" height="40" rx="10" fill="#141b29" stroke="#3fd0ff"/><text x="80" y="55">CRM</text>
+                        <rect x="350" y="30" width="100" height="40" rx="10" fill="#141b29" stroke="#7c6cff"/><text x="400" y="55">Books</text>
+                        <rect x="30" y="200" width="100" height="40" rx="10" fill="#141b29" stroke="#7c6cff"/><text x="80" y="225">Desk</text>
+                        <rect x="350" y="200" width="100" height="40" rx="10" fill="#141b29" stroke="#3fd0ff"/><text x="400" y="225">Campaigns</text>
+                        <rect x="190" y="12" width="100" height="36" rx="10" fill="#141b29" stroke="#3fd0ff"/><text x="240" y="35">Creator</text>
+                        <rect x="190" y="224" width="100" height="36" rx="10" fill="#141b29" stroke="#7c6cff"/><text x="240" y="247">Your Apps</text>
+                    </g>
+                </svg>
+            </figure>
+        </div>
+
+        <div class="process-list">
+            <div class="step reveal"><div class="step-num">01</div><div><h3>Discover</h3><p>We map your current tools, workflows, teams and the problems you want to solve.</p></div></div>
+            <div class="step reveal"><div class="step-num">02</div><div><h3>Plan & Configure</h3><p>We choose the right Zoho applications and configure them around your processes.</p></div></div>
+            <div class="step reveal"><div class="step-num">03</div><div><h3>Migrate & Integrate</h3><p>We move your data across and connect Zoho with the systems you already rely on.</p></div></div>
+            <div class="step reveal"><div class="step-num">04</div><div><h3>Train Your Team</h3><p>We show your staff how to use the system so adoption is smooth and quick.</p></div></div>
+            <div class="step reveal"><div class="step-num">05</div><div><h3>Support & Improve</h3><p>We provide ongoing support and refine automations as your business grows.</p></div></div>
+        </div>
+
+    </div>
+</div>
+</section>
+
+<!-- AUTOMATION -->
+<section class="design-system">
+<div class="wrap">
+    <div class="sec-head reveal">
+        <div class="eyebrow">Business Automation</div>
+        <h2>Less repetitive work. More time for growth.</h2>
+        <p>Well-designed automation removes manual steps between your teams, so information moves where it needs to go without being retyped.</p>
+    </div>
+
+    <div class="design-system-grid">
+        <div class="system-item reveal"><div class="system-number">01</div><h3>Workflow Automation</h3><p>Automatic follow-ups, approvals, reminders and notifications.</p></div>
+        <div class="system-item reveal"><div class="system-number">02</div><h3>Data Migration</h3><p>Careful transfer of your existing records into Zoho.</p></div>
+        <div class="system-item reveal"><div class="system-number">03</div><h3>Integrations</h3><p>Connections between Zoho and your other business tools.</p></div>
+        <div class="system-item reveal"><div class="system-number">04</div><h3>Reporting</h3><p>Dashboards that give managers a clear view of performance.</p></div>
+    </div>
+</div>
+</section>
+
+<!-- TOOLS -->
+<section>
+<div class="wrap">
+    <div class="sec-head reveal">
+        <div class="eyebrow">Platforms & Capabilities</div>
+        <h2>The tools and skills behind your setup.</h2>
+        <p>We work across the Zoho ecosystem and the technologies that connect it to the rest of your business.</p>
+    </div>
+
+    <div class="tools reveal">
+        <span class="tool-chip">Zoho CRM</span>
+        <span class="tool-chip">Zoho Books</span>
+        <span class="tool-chip">Zoho Desk</span>
+        <span class="tool-chip">Zoho Creator</span>
+        <span class="tool-chip">Zoho Campaigns</span>
+        <span class="tool-chip">Zoho Mail</span>
+        <span class="tool-chip">Zoho Flow</span>
+        <span class="tool-chip">Custom Workflows</span>
+        <span class="tool-chip">API Integration</span>
+        <span class="tool-chip">Data Migration</span>
+        <span class="tool-chip">User Training</span>
+    </div>
+</div>
+</section>
+
+<!-- WHY US -->
+<section class="features">
+<div class="wrap">
+    <div class="sec-head reveal">
+        <div class="eyebrow">Why iTechLink</div>
+        <h2>Software should fit your business, not the other way round.</h2>
+        <p>We start with how your teams actually work, then configure Zoho to support it — with training and support to make it stick.</p>
+    </div>
+
+    <div class="why-grid">
+        <article class="why-card reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 18V6M4 18h16"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+            <h3>Business Focused</h3>
+            <p>Every setup decision is tied to your goals, processes and the results you want to see.</p>
+        </article>
+
+        <article class="why-card reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="3"/><path d="M5 20c1-4 3.5-6 7-6s6 2 7 6"/></svg>
+            <h3>Tailored Setup</h3>
+            <p>We configure and customise Zoho around your workflows rather than forcing a generic template.</p>
+        </article>
+
+        <article class="why-card reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 4v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7l7-4z"/><path d="M9 12l2 2 4-4"/></svg>
+            <h3>Ongoing Support</h3>
+            <p>We stay available after launch to answer questions, fix issues and improve your automations.</p>
+        </article>
+    </div>
+</div>
+</section>
+
+<!-- CTA -->
+<section>
+<div class="wrap">
+    <div class="cta reveal">
+        <h2>Ready to connect your business on Zoho?</h2>
+        <p>Tell us how your teams work today and we will recommend the right Zoho setup for you.</p>
+        <div class="cta-actions">
+            <a href="mailto:sales@itechlink.com.ng" class="btn-dark">Request a Quote</a>
+            <a href="tel:+2347011113716" class="btn-outline-dark">Call iTechLink</a>
+        </div>
+    </div>
+</div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+<div class="wrap">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <div class="logo">
+                <img class="logo-img" src="logo_itech-removebg-preview - Copy.png" alt="iTechLink logo">
+                <span><span class="brand-itech">iTech</span><span class="brand-link">Link</span></span>
+            </div>
+            <p>Enterprise-grade IT services and digital solutions for businesses that want to work smarter and grow.</p>
+        </div>
+
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="service.html">Services</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="footer-col">
+            <h4>Services</h4>
+            <a href="web-development.html">Web Design & Development</a>
+            <a href="uiux.html">UI/UX Design</a>
+            <a href="zoho.html">Zoho Solutions</a>
+            <a href="service.html#seo">SEO</a>
+            <a href="service.html#cybersecurity">Cybersecurity</a>
+            <a href="service.html#cloud">Cloud Solutions</a>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <span>© 2026 iTechLink IT Services & Solutions. All rights reserved.</span>
+        <span>25, Oju Olobun Close, Victoria Island, Lagos</span>
+    </div>
+</div>
+</footer>
+
+<!-- JAVASCRIPT -->
+<script>
+/* MOBILE MENU */
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+
+menuBtn.addEventListener("click", () => {
+    const active = menuBtn.classList.toggle("active");
+    mobileMenu.classList.toggle("active", active);
+    menuBtn.setAttribute("aria-expanded", active);
+});
+
+/* CLOSE MOBILE MENU ON LINK CLICK */
+document.querySelectorAll(".mobile-menu a").forEach(a => {
+    a.addEventListener("click", () => {
+        menuBtn.classList.remove("active");
+        mobileMenu.classList.remove("active");
+        menuBtn.setAttribute("aria-expanded", "false");
+    });
+});
+
+/* SCROLL REVEAL */
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: .12 });
+
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
